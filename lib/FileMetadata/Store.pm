@@ -4,7 +4,7 @@ our $VERSION = '1.0';
 
 =head1 NAME
 
-MetaInfo::Store
+FileMetadata::Store
 
 =head1 SYNOPSIS
 
@@ -13,8 +13,9 @@ An interface to be implemented by Stores in the FileMetadata framework
 =head1 DESCRIPTION
 
 Stores are used to store metadata for use or analysis at a later time.
-Stores can use SQL databases, flat files or XML as storage. Stores are specific
-to the MetaInfo framework and are not intended for use as stand alone modules.
+Stores can use SQL databases, flat files or XML as storage. Stores are
+specific to the FileMetadata framework and are not intended for use as
+stand alone modules.
 
 Stores do not implement any methods to query metadata from stores.
 It is considered that the use of metadata is application specific
@@ -89,7 +90,7 @@ specified 'ID' must be discarded.
 This method takes a single argument which is the identifier for a resource.
 
 This method returns the time (as seconds since epoch) when the information
-associated with the given identifier was stored. Returns zero if the 
+associated with the given identifier was stored. Returns undef if the 
 identifier is not known.
 
 =cut

@@ -31,33 +31,35 @@ The new method creates and returns a reference to a new object.
 
 The format for the config hash is as follows
 
-{file => '/tmp/f00jkdw.xml',
+  {
+    
+    file => '/tmp/f00jkdw.xml',
 
- root_element => 'meta-info',
+    root_element => 'meta-info',
 
- item_element => 'item',
+    item_element => 'item',
 
- store => [{name => 'id',
+    store => [{name => 'id',
 
-            property => 'ID',
+               property => 'ID',
 
-            type => 'attribute'},
+               type => 'attribute'},
 
-           {name => 'timestamp',
+              {name => 'timestamp',
 
-            property => 'TIMESTAMP',
+               property => 'TIMESTAMP',
 
-            type => 'element'},
+               type => 'element'},
 
-           {name => 'author',
+              {name => 'author',
 
-            property => 'FileMetadata::Miner::HTML::author',
+               property => 'FileMetadata::Miner::HTML::author',
 
-            default => 'Jules Verne'}
+               default => 'Jules Verne'}
 
-          ]
+             ]
 
-}
+  }
 
 'file' is the path to which the information must be written. If the file
 already exists, it is assumed to have been written with the same configuration.
@@ -82,25 +84,25 @@ meta hash is used as an element name with the '::' replaced by '_'. If the
 
 The resulting XML output from this store would look as below.
 
-<meta-info>
+  <meta-info>
 
-  <item id="/abcd.def">
+    <item id="/abcd.def">
 
-    <timestamp>1020200222</timestamp>
+      <timestamp>1020200222</timestamp>
 
-    <author>Scott Lee</author>
+      <author>Scott Lee</author>
 
-  </item>
+    </item>
 
-  <item id="/wxyz.def">
+    <item id="/wxyz.def">
 
-    <timestamp>1320290459</timestamp>
+      <timestamp>1320290459</timestamp>
 
-    <author>Timothy Walker</author>
+      <author>Timothy Walker</author>
 
-  </item>
+    </item>
 
-</meta-info>
+  </meta-info>
 
 =cut
 

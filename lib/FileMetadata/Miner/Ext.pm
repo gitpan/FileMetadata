@@ -58,17 +58,17 @@ FileMetadata::Miner::Ext
 
 =head1 SYNOPSIS
 
-my $miner = FileMetadata::Miner::Ext->new ({});
+  my $miner = FileMetadata::Miner::Ext->new ({});
 
-my $meta = {};
+  my $meta = {};
 
-$miner->mine ('path', $meta);
+  $miner->mine ('path', $meta);
 
-foreach (keys %{$meta}) {
+  foreach (keys %{$meta}) {
 
-  print "$_ = $meta->{$_}", "\n";
+    print "$_ = $meta->{$_}", "\n";
 
-}
+  }
 
 =head1 DESCRIPTION
 
@@ -78,13 +78,13 @@ only differ from the file it describes by a suffix.
 
 The XML is as described below.
 
-<meta-data>
+  <meta-data>
 
-  <Title>My document</Title>
+    <Title>My document</Title>
 
-  <description>Here is a description</description>
+    <description>Here is a description</description>
 
-</meta-data>
+  </meta-data>
 
 The root element can contain any number of elements which form
 the basis for keys in the meta hash. The text that these elements 
@@ -106,11 +106,11 @@ suffix is appended to any given file path. The resulting file is
 expected to be in the XML format described above. The default suffix is '.ext'.
 The config hash can be constructed as follows:
 
-{
+  {
 
-  suffix => '.ext'
+    suffix => '.ext'
 
-}
+  }
 
 =head2 mine
 

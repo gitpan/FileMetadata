@@ -25,6 +25,7 @@ ok ($miner->mine ('t/miner_stat.t', $meta));
 my ($size, $atime, $mtime, $ctime) = (stat ('t/miner_stat.t'))[7..10];
 ok (   defined $meta->{$test_pkg."::size"}
     && defined $meta->{$test_pkg."::ctime"}
+    && defined $meta->{$test_pkg."::type"}
     && defined $meta->{$test_pkg."::mtime"});
 
 # 5. Test to see ctime is right
@@ -55,5 +56,7 @@ $miner = FileMetadata::Miner::Stat->new ($config);
 $meta = {};
 $miner->mine ('t/miner_stat.t', $meta);
 ok ($size/(1024*1024) ." MB", $meta->{$test_pkg."::size"});
+
+# Test to make sure that file type is right
 
 # TODO : Test Date Config

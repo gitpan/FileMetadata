@@ -3,6 +3,7 @@ package FileMetadata::Miner::Stat;
 use strict;
 use utf8;
 use POSIX qw(strftime);
+use Fcntl ':mode';
 
 our $VERSION = '1.0';
 
@@ -60,6 +61,16 @@ sub mine {
 			localtime ((stat (_))[10]));
   $meta->{"$name"."::ctime"} = $time_str;
 
+  # Figure out the type of file
+
+  if (S_ISREG ((stat (_))[2])) {
+    $meta->{"$name\:\:type"} = 'REG'
+  } elsif (S_ISDIR ((stat (_))[2])) {
+    $meta->{"$name\:\:type"} = 'DIR'
+  } else {
+    $meta->{"$name\:\:type"} = 'OTHER'
+  }
+
   return $result;
 }
 
@@ -72,17 +83,17 @@ FileMetadata::Miner::Stat
 
 =head1 SYNOPSIS
 
-use FileMetadata::Miner::Stat;
+  use FileMetadata::Miner::Stat;
 
-my $config = {time => '%T',
+  my $config = {time => '%T',
+  
+                size => 'KB'};
 
-              size => 'KB'};
+  my $miner = FileMetadata::Miner::Stat->new ($config);
 
-my $miner = FileMetadata::Miner::Stat->new ($config);
+  my $meta = {};
 
-my $meta = {};
-
-print "Size : $meta->{'FileMetadata::Miner::Stat::size'}"
+  print "Size : $meta->{'FileMetadata::Miner::Stat::size'}"
 
   if $miner->mine ('path', $meta);
 
@@ -95,6 +106,8 @@ This module extracts three statistics for a file.
 2. The last modified time
 
 3. Size
+
+4. The type of the file
 
 This module implements methods required for FileMetadata framework miners
 but can be used independently.
@@ -117,13 +130,13 @@ is represented as 'VALUE UNITS'.
 
 The following can be passed to the new function:
 
-{
+  {
 
-  time => '%T',
+    time => '%T',
 
-  size => 'bytes'
+    size => 'bytes'
 
-}
+  }
 
 =head2 mine
 
@@ -138,6 +151,9 @@ FileMetadata::Miner::Stat::mtime - Last modification time of file
 
 FileMetadata::Miner::Stat::size - Size of file
 
+FileMetadata::Miner::Stat::type - The type of the file.
+Either 'REG', 'DIR' or 'OTHER'. (Added in version 1.1)
+
 time and size are formatted according to config options given to the
 new() method or by default as:
 
@@ -147,7 +163,7 @@ size '10 KB' '10240 bytes' '10240'
 
 =head1 VERSION
 
-1.0 - This is the first release
+1.1 - This is a small update to the first release
 
 =head1 REQUIRES
 

@@ -80,17 +80,17 @@ __END__
 
 =head1 NAME
 
-FileMetadata::Miner::HTML;
+FileMetadata::Miner::HTML
 
 =head1 SYNOPSIS
 
-use FileMetadata::Miner::HTML;
+  use FileMetadata::Miner::HTML;
 
-my $miner = FileMetadata::Miner::HTML->new ({});
+  my $miner = FileMetadata::Miner::HTML->new ({});
 
-my $meta = {};
+  my $meta = {};
 
-print "TITLE: $meta->{'title'}" if $miner->mine ('ex.html', $meta);
+  print "TITLE: $meta->{'title'}" if $miner->mine ('ex.html', $meta);
 
 =head1 DESCRIPTION
 

@@ -4,7 +4,7 @@ our $VERSION = '1.0';
 
 =head1 NAME
 
-MetaInfo::Miner
+FileMetadata::Miner
 
 =head1 SYNOPSIS
 
@@ -18,7 +18,7 @@ multiple miners executed in a series. One miner can extract information
 regarding file statistics. Such a miner would be generic. A more specialized
 miner can then be used to extract information on the author.
 
-Miners can be used outside the MetaInfo framework with ease and should be
+Miners can be used outside the FileMetadata framework with ease and should be
 implemented for such general use.
 
 =head1 METHODS

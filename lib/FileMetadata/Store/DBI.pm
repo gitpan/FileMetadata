@@ -34,31 +34,33 @@ database operations.
 
 The format for the config hash is as follows
 
-{database =&gt; 'DBI:mysql:test',
+  {
 
- username =&gt; 'user',
+    database =&gt; 'DBI:mysql:test',
 
- password =&gt; 'pass',
+    username =&gt; 'user',
 
- table =&gt; 'table',
+    password =&gt; 'pass',
 
- column =&gt; [{name =&gt; 'id_column',
+    table =&gt; 'table',
 
-             property =&gt; 'ID',
+    column =&gt; [{name =&gt; 'id_column',
 
-             type =&gt; 'SQL_STRING'},
+                   property =&gt; 'ID',
 
-            {name =&gt; 'timestamp_column',
+                   type =&gt; 'SQL_STRING'},
 
-             property =&gt; 'TIMESTAMP',
+                  {name =&gt; 'timestamp_column',
 
-             type =&gt; 'SQL_INTEGER'},
+                   property =&gt; 'TIMESTAMP',
 
-            {name =&gt; 'FileMetadata::Miner::HTML::author',
+                   type =&gt; 'SQL_INTEGER'},
 
-             default =&gt; 'Jules Verne'}]
+                  {name =&gt; 'FileMetadata::Miner::HTML::author',
 
-}
+                   default =&gt; 'Jules Verne'}]
+
+  }
 
 database, username and password are used to make a connection to the
 SQL database. See L<DBI/"connect"> for the correct format for these
@@ -276,7 +278,7 @@ sub has {
     return @{@{$results}[0]}[0];
   } else {
     return undef;
-}
+  }
 }
 
 =head2 list
